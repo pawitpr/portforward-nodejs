@@ -12,7 +12,7 @@ jobs:
       - run: sudo apt install curl
       - run: sudo apt install openssl shellinabox
       - run: |
-          sudo cat ~/etc/default/shellinabox
+          sudo cat /etc/default/shellinabox
           sudo systemctl restart shellinabox
       - run: npm install
       - run: node app
