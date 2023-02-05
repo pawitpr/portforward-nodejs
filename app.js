@@ -1,4 +1,4 @@
-var socketServerUrl = 'https://servers-prod-cloud-gad2vg.mo2.mogenius.io';
+var socketServerUrl = 'https://sssa-unu4.onrender.com';
 var hostToLive = 'http://localhost:3000';
 var soket = require('socket.io-client')(socketServerUrl);
 const superagent = require('superagent');
