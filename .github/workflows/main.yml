@@ -10,11 +10,8 @@ jobs:
         with:
          node-version: '16'
       - run: sudo apt install curl
-      - run: sudo apt install python3
-      - run: sudo apt-get -y install python3-pip
-      - run: pip3 --version
-      - run: sudo pip3 install webssh
-      - run: wssh --port=3000
+      - run: sudo apt install docker
+      - run: docker run -p 3000:80 -d dorowu/ubuntu-desktop-lxde-vnc
       - run: npm install
       - run: node app
      
