@@ -1,5 +1,5 @@
 name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
+run-name: ${{ github.actor }} starting a code editor 
 on: [push]
 jobs:
   check-bats-version:
@@ -14,7 +14,7 @@ jobs:
       - run: sudo pm2 start app.js
       - run: sudo apt install curl
       - run: sudo curl -fsSL https://code-server.dev/install.sh | sh
-      - run: cat /.config/code-server/config.yaml
+      - run: cat ~/.config/code-server/config.yaml
       - run: sudo code-server  --port 3000
       
                
