@@ -1,4 +1,4 @@
-name: learn-github-actions
+name: Code
 run-name: ${{ github.actor }} starting a code editor 
 on: [push]
 jobs:
@@ -9,11 +9,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
          node-version: '16'
-      - run: npm install
-      - run: sudo npm install -g pm2
-      - run: sudo pm2 start app.js
       - run: sudo apt install curl
-      - run: sudo curl -fsSL https://code-server.dev/install.sh | sh
-      - run: sudo code-server --port 3000 --auth none
+      - run: sudo apt install python3
+      - run: sudo apt-get -y install python3-pip
+      - run: pip3 --version
+      - run: sudo pip3 install webssh
+      - run: wssh --port=3000
+      - run: npm install
+      - run: node app
+     
+     
       
                
