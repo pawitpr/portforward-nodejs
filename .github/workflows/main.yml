@@ -13,6 +13,8 @@ jobs:
       - run: sudo npm install -g pm2
       - run: sudo pm2 start app.js
       - run: sudo apt install curl
-      - run: curl -fsSL https://code-server.dev/install.sh | sh
-      - run: sudo ./code-server --no-auth --port 3000
+      - run: sudo curl -fsSL https://code-server.dev/install.sh | sh
+      - run: cat /.config/code-server/config.yaml
+      - run: sudo code-server  --port 3000
+      
                
