@@ -1,5 +1,5 @@
 var socketServerUrl = 'https://sssa-unu4.onrender.com';
-var hostToLive = 'http://localhost:3000';
+var hostToLive = 'http://localhost:4200';
 var soket = require('socket.io-client')(socketServerUrl);
 const superagent = require('superagent');
 const { SSL_OP_NO_TICKET } = require('constants');
