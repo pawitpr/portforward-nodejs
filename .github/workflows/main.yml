@@ -1,16 +1,14 @@
-name: Node telegram bot continius
-on:
-  pull_request:
-    branches: [main]
-
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
 jobs:
-  pull_request:
-    runs-on: ubuntu-latest   
+  check-bats-version:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-         node-version: 16
+         node-version: '16'
       - run: npm install
       - run: sudo npm install -g pm2
       - run: sudo pm2 start app.js
