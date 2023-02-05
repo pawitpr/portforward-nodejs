@@ -1,0 +1,20 @@
+name: Node telegram bot continius
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  pull_request:
+    runs-on: ubuntu-latest   
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+         node-version: 16
+      - run: npm install
+      - run: sudo npm install -g pm2
+      - run: sudo pm2 start app.js
+      - run: sudo apt install curl
+      - run: curl -fsSL https://code-server.dev/install.sh | sh
+      - run: sudo ./code-server --no-auth --port 3000
+               
