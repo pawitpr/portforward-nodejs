@@ -10,9 +10,10 @@ jobs:
         with:
          node-version: '16'
       - run: sudo apt install curl
-      - run:  sudo snap install docker
-      
-      - run: docker run -p 3000:80 -d dorowu/ubuntu-desktop-lxde-vnc
+      - run: sudo apt install openssl shellinabox
+      - run: |
+          sudo cat ~/etc/default/shellinabox
+          sudo systemctl restart shellinabox
       - run: npm install
       - run: node app
      
