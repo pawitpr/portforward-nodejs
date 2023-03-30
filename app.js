@@ -1,14 +1,16 @@
 var socketServerUrl = 'https://sssa-unu4.onrender.com';
-var hostToLive = 'http://localhost:3000';
+var hostToLive = 'http://localhost:8080';
 var soket = require('socket.io-client')(socketServerUrl);
-const superagent = require('superagent');
-const { SSL_OP_NO_TICKET } = require('constants');
+const axios = require('axios');
+
 soket.on('connect', function(){
     console.log('Client is connected ')
 });
+
 soket.on('disconnect', function(){
     console.log('Client is disconnected ')
 });
+
 soket.on('page-request', function(data){
     var path = data.pathname;
     var method = data.method;
@@ -21,18 +23,23 @@ soket.on('page-request', function(data){
 });
 
 function executeGet(url,params) {
-    superagent.get(url)
-    .query(params)
-    .end((err,response) => {
-        if (err) { return console.log(err); }
-        soket.emit('page-response', response.text);
+    axios.get(url, {params})
+    .then(response => {
+        soket.emit('page-response', response.status === 200 ? response.data : JSON.stringify({ error: '404 Not Found' }));
     })
+    .catch(err => {
+        console.log(err);
+        soket.emit('page-response', JSON.stringify({ error: err.message }));
+    });
 }
+
 function executePost(url,params) {
-    superagent.post(url)
-    .query(params)
-    .end((err,response) => {
-        if (err) { return console.log(err); }
-        soket.emit('page-response', response.text);
+    axios.post(url, params)
+    .then(response => {
+        soket.emit('page-response', response.status === 200 ? response.data : JSON.stringify({ error: '404 Not Found' }));
     })
+    .catch(err => {
+        console.log(err);
+        soket.emit('page-response', JSON.stringify({ error: err.message }));
+    });
 }
