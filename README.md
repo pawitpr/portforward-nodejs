@@ -14,7 +14,7 @@ This is a port forward project that allow to forward port
 
 
 
-## Installation 😏
+## Installation 
 
 Install this using node js
 
